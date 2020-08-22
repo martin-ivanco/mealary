@@ -1,4 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="false" userDefinedModelVersionIdentifier="">
-    <elements/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19G2021" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Day" representedClassName="Day" syncable="YES" codeGenerationType="class">
+        <attribute name="date_" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="meals_" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Meal" inverseName="day_" inverseEntity="Meal"/>
+    </entity>
+    <entity name="Food" representedClassName="Food" syncable="YES" codeGenerationType="class">
+        <attribute name="calories" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="carbs" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="fats" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="name_" optional="YES" attributeType="String"/>
+        <attribute name="proteins" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="meals_" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Meal" inverseName="foods_" inverseEntity="Meal"/>
+    </entity>
+    <entity name="Meal" representedClassName="Meal" syncable="YES" codeGenerationType="class">
+        <attribute name="type_" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="day_" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Day" inverseName="meals_" inverseEntity="Day"/>
+        <relationship name="foods_" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Food" inverseName="meals_" inverseEntity="Food"/>
+    </entity>
+    <elements>
+        <element name="Food" positionX="-63" positionY="-18" width="128" height="133"/>
+        <element name="Meal" positionX="-54" positionY="27" width="128" height="88"/>
+        <element name="Day" positionX="-36" positionY="54" width="128" height="73"/>
+    </elements>
 </model>
