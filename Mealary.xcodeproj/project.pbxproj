@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B4AE06924F26A3900204BA7 /* FoodsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4AE06824F26A3900204BA7 /* FoodsView.swift */; };
 		5BF8BC5624F0ED7000FC1FF8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8BC5524F0ED7000FC1FF8 /* AppDelegate.swift */; };
 		5BF8BC5824F0ED7000FC1FF8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8BC5724F0ED7000FC1FF8 /* SceneDelegate.swift */; };
 		5BF8BC5B24F0ED7000FC1FF8 /* Mealary.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8BC5924F0ED7000FC1FF8 /* Mealary.xcdatamodeld */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5B4AE06824F26A3900204BA7 /* FoodsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodsView.swift; sourceTree = "<group>"; };
 		5BF8BC5224F0ED7000FC1FF8 /* Mealary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mealary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BF8BC5524F0ED7000FC1FF8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5BF8BC5724F0ED7000FC1FF8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -74,6 +76,7 @@
 				5BF8BC5724F0ED7000FC1FF8 /* SceneDelegate.swift */,
 				5BF8BC5C24F0ED7000FC1FF8 /* AppView.swift */,
 				5BF8BC6C24F0F13800FC1FF8 /* DiaryView.swift */,
+				5B4AE06824F26A3900204BA7 /* FoodsView.swift */,
 				5BF8BC7224F1095C00FC1FF8 /* Day.swift */,
 				5BF8BC7024F1077200FC1FF8 /* Meal.swift */,
 				5BF8BC7624F1198C00FC1FF8 /* Food.swift */,
@@ -168,6 +171,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5BF8BC6D24F0F13800FC1FF8 /* DiaryView.swift in Sources */,
+				5B4AE06924F26A3900204BA7 /* FoodsView.swift in Sources */,
 				5BF8BC5624F0ED7000FC1FF8 /* AppDelegate.swift in Sources */,
 				5BF8BC7324F1095C00FC1FF8 /* Day.swift in Sources */,
 				5BF8BC7124F1077200FC1FF8 /* Meal.swift in Sources */,

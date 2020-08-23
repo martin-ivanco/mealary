@@ -28,7 +28,7 @@ struct DiaryView: View {
             action: {
                 self.showDatePicker = true
             }, label: {
-                Image(systemName: "calendar")
+                Image(systemName: "calendar").imageScale(.large)
             })
         .sheet(isPresented: $showDatePicker) {
             DatePicker("Select a date", selection: self.$date, displayedComponents: .date).labelsHidden()
@@ -40,7 +40,7 @@ struct DayView: View {
     @State var day: Day
     
     @State private var showMealEditor = false
-    @State private var mealToEdit: MealType? = nil
+    @State private var mealToEdit: MealType?
     
     var body: some View {
         VStack {

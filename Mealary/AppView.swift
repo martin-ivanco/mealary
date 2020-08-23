@@ -16,7 +16,7 @@ struct AppView: View {
                     Image(systemName: "calendar")
                     Text("Diary")
                 }
-            Text("Here are the foods.")
+            FoodsView()
                 .tabItem {
                     Image(systemName: "list.bullet")
                     Text("Foods")
