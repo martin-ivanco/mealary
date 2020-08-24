@@ -8,7 +8,7 @@
 
 import CoreData
 
-extension Day {
+extension Day: Identifiable {
     static func withDate(_ date: Date, context: NSManagedObjectContext) -> Day {
         // look up date in Core Data
         let request = fetchRequest(NSPredicate(format: "date_ = %@", date.startOfDay as NSDate))

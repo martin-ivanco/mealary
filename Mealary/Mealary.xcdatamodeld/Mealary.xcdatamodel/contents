@@ -10,16 +10,22 @@
         <attribute name="fats" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="name_" optional="YES" attributeType="String"/>
         <attribute name="proteins" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <relationship name="meals_" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Meal" inverseName="foods_" inverseEntity="Meal"/>
+        <relationship name="items_" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Item" inverseName="food_" inverseEntity="Item"/>
+    </entity>
+    <entity name="Item" representedClassName="Item" syncable="YES" codeGenerationType="class">
+        <attribute name="weight" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="food_" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Food" inverseName="items_" inverseEntity="Food"/>
+        <relationship name="meal_" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Meal" inverseName="items_" inverseEntity="Meal"/>
     </entity>
     <entity name="Meal" representedClassName="Meal" syncable="YES" codeGenerationType="class">
         <attribute name="type_" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="day_" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Day" inverseName="meals_" inverseEntity="Day"/>
-        <relationship name="foods_" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Food" inverseName="meals_" inverseEntity="Food"/>
+        <relationship name="items_" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Item" inverseName="meal_" inverseEntity="Item"/>
     </entity>
     <elements>
-        <element name="Food" positionX="-63" positionY="-18" width="128" height="133"/>
-        <element name="Meal" positionX="-54" positionY="27" width="128" height="88"/>
-        <element name="Day" positionX="-36" positionY="54" width="128" height="73"/>
+        <element name="Day" positionX="-500.55859375" positionY="18.37109375" width="128" height="73"/>
+        <element name="Food" positionX="114.2421875" positionY="23.51171875" width="128" height="133"/>
+        <element name="Meal" positionX="-312.30859375" positionY="20.1484375" width="128" height="88"/>
+        <element name="Item" positionX="-99.40234375" positionY="23.78125" width="128" height="88"/>
     </elements>
 </model>

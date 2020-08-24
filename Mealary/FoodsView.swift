@@ -7,7 +7,6 @@
 //
 
 import SwiftUI
-import Combine
 
 struct FoodsView: View {
     @Environment(\.managedObjectContext) var context
@@ -20,7 +19,11 @@ struct FoodsView: View {
         NavigationView {
             List {
                 ForEach(foods) { food in
-                    Text(food.name)
+                    HStack {
+                        Text(food.name)
+                        Spacer()
+                        Image(systemName: "chevron.right").imageScale(.small).foregroundColor(.gray)
+                    }
                         .onTapGesture {
                             self.foodToEdit = food
                             self.showFoodEditor = true
@@ -151,36 +154,6 @@ struct FoodView: View {
                 }), secondaryButton: .cancel())
             }
         }
-    }
-}
-
-struct NumberField : View {
-    let label: String
-    @State private var enteredValue : String = ""
-    @State private var valid : Bool = true
-    @Binding var value : Double?
-    
-    init(_ label: String, value: Binding<Double?>) {
-        self.label = label
-        _value = value
-    }
-
-    var body: some View {
-        TextField(label, text: $enteredValue)
-            .onReceive(Just(enteredValue)) { typedValue in
-                if let newValue = Double(typedValue) {
-                    self.value = newValue
-                    self.valid = true
-                } else {
-                    self.valid = false
-                }
-            }
-            .onAppear() {
-                if let v = self.value {
-                    self.enteredValue = "\(v)"
-                }
-            }
-            .foregroundColor(valid ? Color.primary : Color.red)
     }
 }
 

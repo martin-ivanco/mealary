@@ -11,36 +11,47 @@ import SwiftUI
 struct DiaryView: View {
     @Environment(\.managedObjectContext) var context
     
+    @State private var day: Day? = nil
     @State private var date = Date()
+    @State private var showDatePicker = false
     
     var body: some View {
         NavigationView {
-            DayView(day: Day.withDate(date, context: context))
-                .navigationBarTitle("\(date)")
-                .navigationBarItems(trailing: datePicker)
-        }
-    }
-    
-    @State private var showDatePicker = false
-    
-    var datePicker: some View {
-        Button(
-            action: {
-                self.showDatePicker = true
-            }, label: {
-                Image(systemName: "calendar").imageScale(.large)
+            DayView(day: day ?? Day.withDate(date, context: self.context))
+            .navigationBarItems(trailing: Button(
+                action: {
+                    self.showDatePicker = true
+                }, label: {
+                    Image(systemName: "calendar").imageScale(.large)
+                })
+            .sheet(isPresented: $showDatePicker) {
+                NavigationView {
+                    DatePicker("Select a date", selection: self.$date, displayedComponents: .date)
+                        .labelsHidden()
+                        .navigationBarTitle("Choose date")
+                        .navigationBarItems(
+                            leading: Button("Cancel") {
+                                if self.day == nil {
+                                    self.day = Day.withDate(Date(), context: self.context)
+                                }
+                                self.date = self.day!.date
+                                self.showDatePicker = false
+                            },
+                            trailing: Button("Choose") {
+                                self.day = Day.withDate(self.date, context: self.context)
+                                self.showDatePicker = false
+                            }
+                        )
+                }
             })
-        .sheet(isPresented: $showDatePicker) {
-            DatePicker("Select a date", selection: self.$date, displayedComponents: .date).labelsHidden()
         }
     }
 }
 
 struct DayView: View {
-    @State var day: Day
-    
+    let day: Day
     @State private var showMealEditor = false
-    @State private var mealToEdit: MealType?
+    @State private var mealToEdit: MealType? = nil
     
     var body: some View {
         VStack {
@@ -52,7 +63,11 @@ struct DayView: View {
             }
             List {
                 ForEach(MealType.orderedTypes) { mealType in
-                    Text(mealType.name)
+                    HStack {
+                        Text(mealType.name)
+                        Spacer()
+                        Image(systemName: "chevron.right").imageScale(.small).foregroundColor(.gray)
+                    }
                     .onTapGesture {
                         self.mealToEdit = mealType
                         self.showMealEditor = true
@@ -60,10 +75,11 @@ struct DayView: View {
                 }
             }
             .sheet(isPresented: self.$showMealEditor) {
-                MealEditor(meal: self.day.meal(self.mealToEdit!))
+                MealView(meal: self.day.meal(self.mealToEdit!))
                     .environment(\.managedObjectContext, self.day.managedObjectContext!)
             }
         }
+        .navigationBarTitle("\(day.date)")
     }
 }
 
@@ -84,34 +100,11 @@ struct NutrientView: View {
                 Circle().stroke(lineWidth: 0.1 * radius).fill(nutrient.color).frame(width: radius, height: radius)
                 VStack {
                     Text("\(Int(round(value)))").font(.title)
-                    Text(nutrient.unit).foregroundColor(Color.gray)
+                    Text(nutrient.unit).foregroundColor(.gray)
                 }
             }.foregroundColor(nutrient.color)
-            Text("\(nutrient.name)").font(.headline).foregroundColor(Color.gray)
+            Text("\(nutrient.name)").font(.headline).foregroundColor(.gray)
         }
-    }
-}
-
-struct MealEditor: View {
-    @State var meal: Meal
-    @FetchRequest(fetchRequest: Food.fetchRequest(.all)) var foods: FetchedResults<Food>
-    
-    var body: some View {
-        VStack {
-            Text(meal.type.name).font(.title)
-            List {
-                ForEach(Array(meal.foods)) { food in
-                    Text(food.name)
-                }
-            }
-            Divider()
-            List {
-                ForEach(foods) { food in
-                    Text(food.name)
-                }
-            }
-        }
-        
     }
 }
 

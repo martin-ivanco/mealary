@@ -8,7 +8,7 @@
 
 import CoreData
 
-extension Meal {
+extension Meal: Identifiable {
     var type: MealType {
         get { MealType.byId(Int(type_))! }
         set { type_ = Int16(newValue.id) }
@@ -19,15 +19,15 @@ extension Meal {
         set { day_ = newValue }
     }
     
-    var foods: Set<Food> {
-        get { (foods_ as? Set<Food>) ?? [] }
-        set { foods_ = newValue as NSSet }
+    var items: Set<Item> {
+        get { (items_ as? Set<Item>) ?? [] }
+        set { items_ = newValue as NSSet }
     }
     
     func nutritionValue(for nutrient: Nutrient) -> Double {
         var sum: Double = 0
-        for food in self.foods {
-            sum += food.nutritionValue(for: nutrient)
+        for item in self.items {
+            sum += item.nutritionValue(for: nutrient)
         }
         return sum
     }
