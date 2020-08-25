@@ -2,6 +2,7 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19G2021" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Day" representedClassName="Day" syncable="YES" codeGenerationType="class">
         <attribute name="date_" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="weight" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <relationship name="meals_" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Meal" inverseName="day_" inverseEntity="Meal"/>
     </entity>
     <entity name="Food" representedClassName="Food" syncable="YES" codeGenerationType="class">
@@ -11,6 +12,10 @@
         <attribute name="name_" optional="YES" attributeType="String"/>
         <attribute name="proteins" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <relationship name="items_" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Item" inverseName="food_" inverseEntity="Item"/>
+    </entity>
+    <entity name="Goal" representedClassName="Goal" syncable="YES" codeGenerationType="class">
+        <attribute name="type_" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="value" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
     </entity>
     <entity name="Item" representedClassName="Item" syncable="YES" codeGenerationType="class">
         <attribute name="weight" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
@@ -23,9 +28,10 @@
         <relationship name="items_" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Item" inverseName="meal_" inverseEntity="Item"/>
     </entity>
     <elements>
-        <element name="Day" positionX="-500.55859375" positionY="18.37109375" width="128" height="73"/>
+        <element name="Day" positionX="-500.55859375" positionY="18.37109375" width="128" height="88"/>
         <element name="Food" positionX="114.2421875" positionY="23.51171875" width="128" height="133"/>
-        <element name="Meal" positionX="-312.30859375" positionY="20.1484375" width="128" height="88"/>
         <element name="Item" positionX="-99.40234375" positionY="23.78125" width="128" height="88"/>
+        <element name="Meal" positionX="-312.30859375" positionY="20.1484375" width="128" height="88"/>
+        <element name="Goal" positionX="-190.44140625" positionY="175.1953125" width="128" height="73"/>
     </elements>
 </model>

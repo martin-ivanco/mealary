@@ -11,6 +11,19 @@ import SwiftUI
 enum Nutrient {
     case calories, carbs, proteins, fats
     
+    var id: Int {
+        switch self {
+        case .calories:
+            return 0
+        case .carbs:
+            return 1
+        case .proteins:
+            return 2
+        case .fats:
+            return 3
+        }
+    }
+    
     var name: String {
         switch self {
         case .calories:
@@ -39,6 +52,21 @@ enum Nutrient {
             return "kcal"
         default:
             return "g"
+        }
+    }
+    
+    static func byId(_ id: Int) -> Nutrient? {
+        switch id {
+        case 0:
+            return .calories
+        case 1:
+            return .carbs
+        case 2:
+            return .proteins
+        case 3:
+            return .fats
+        default:
+            return nil
         }
     }
 }

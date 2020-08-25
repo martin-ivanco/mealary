@@ -31,6 +31,31 @@ extension Day: Identifiable {
         return request
     }
     
+    static func weights(context: NSManagedObjectContext) -> [Double] {
+        let request = fetchRequest(NSPredicate(format: "weight != 0"))
+        let days = (try? context.fetch(request)) ?? []
+        var data: [Double] = []
+        for i in 0..<days.count {
+            if i == 0 {
+                data.append(days[i].weight)
+                continue
+            }
+            
+            let count = Int(abs(round(days[i-1].date.distance(to: days[i].date) / 86400)))
+            let step = (days[i].weight - days[i-1].weight) / Double(count)
+            for j in 1...count {
+                data.append(days[i-1].weight + step * Double(j))
+            }
+        }
+        return data
+    }
+    
+    static func logWeight(_ weight: Double, context: NSManagedObjectContext) {
+        let day = withDate(Date(), context: context)
+        day.weight = weight
+        try! context.save()
+    }
+    
     var date: Date {
         get { date_! }
         set { date_ = newValue }

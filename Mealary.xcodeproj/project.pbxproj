@@ -3,10 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B0724E724F4E29600A5CBE3 /* YouView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0724E624F4E29600A5CBE3 /* YouView.swift */; };
+		5B0724EF24F5161400A5CBE3 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = 5B0724EE24F5161400A5CBE3 /* SwiftUICharts */; };
+		5B0724F324F51CB300A5CBE3 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0724F224F51CB300A5CBE3 /* Goal.swift */; };
 		5B4AE06924F26A3900204BA7 /* FoodsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4AE06824F26A3900204BA7 /* FoodsView.swift */; };
 		5B82D0C024F391A2005E6B5A /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B82D0BF24F391A2005E6B5A /* Item.swift */; };
 		5B82D0C224F3C0DF005E6B5A /* MealView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B82D0C124F3C0DF005E6B5A /* MealView.swift */; };
@@ -26,6 +29,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5B0724E624F4E29600A5CBE3 /* YouView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouView.swift; sourceTree = "<group>"; };
+		5B0724F224F51CB300A5CBE3 /* Goal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
 		5B4AE06824F26A3900204BA7 /* FoodsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodsView.swift; sourceTree = "<group>"; };
 		5B82D0BF24F391A2005E6B5A /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		5B82D0C124F3C0DF005E6B5A /* MealView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealView.swift; sourceTree = "<group>"; };
@@ -51,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B0724EF24F5161400A5CBE3 /* SwiftUICharts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,10 +88,12 @@
 				5BF8BC6C24F0F13800FC1FF8 /* DiaryView.swift */,
 				5B82D0C124F3C0DF005E6B5A /* MealView.swift */,
 				5B4AE06824F26A3900204BA7 /* FoodsView.swift */,
+				5B0724E624F4E29600A5CBE3 /* YouView.swift */,
 				5BF8BC7224F1095C00FC1FF8 /* Day.swift */,
 				5BF8BC7024F1077200FC1FF8 /* Meal.swift */,
 				5B82D0BF24F391A2005E6B5A /* Item.swift */,
 				5BF8BC7624F1198C00FC1FF8 /* Food.swift */,
+				5B0724F224F51CB300A5CBE3 /* Goal.swift */,
 				5BF8BC6E24F102A700FC1FF8 /* Nutrient.swift */,
 				5BF8BC7424F10B8B00FC1FF8 /* FoundationExtensions.swift */,
 				5BF8BC5E24F0ED7200FC1FF8 /* Assets.xcassets */,
@@ -121,6 +129,9 @@
 			dependencies = (
 			);
 			name = Mealary;
+			packageProductDependencies = (
+				5B0724EE24F5161400A5CBE3 /* SwiftUICharts */,
+			);
 			productName = Mealary;
 			productReference = 5BF8BC5224F0ED7000FC1FF8 /* Mealary.app */;
 			productType = "com.apple.product-type.application";
@@ -149,6 +160,9 @@
 				Base,
 			);
 			mainGroup = 5BF8BC4924F0ED7000FC1FF8;
+			packageReferences = (
+				5B0724ED24F5161400A5CBE3 /* XCRemoteSwiftPackageReference "ChartView" */,
+			);
 			productRefGroup = 5BF8BC5324F0ED7000FC1FF8 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -182,12 +196,14 @@
 				5BF8BC7324F1095C00FC1FF8 /* Day.swift in Sources */,
 				5B82D0C024F391A2005E6B5A /* Item.swift in Sources */,
 				5B82D0C224F3C0DF005E6B5A /* MealView.swift in Sources */,
+				5B0724E724F4E29600A5CBE3 /* YouView.swift in Sources */,
 				5BF8BC7124F1077200FC1FF8 /* Meal.swift in Sources */,
 				5BF8BC6F24F102A700FC1FF8 /* Nutrient.swift in Sources */,
 				5BF8BC5B24F0ED7000FC1FF8 /* Mealary.xcdatamodeld in Sources */,
 				5BF8BC5D24F0ED7000FC1FF8 /* AppView.swift in Sources */,
 				5BF8BC7724F1198C00FC1FF8 /* Food.swift in Sources */,
 				5BF8BC5824F0ED7000FC1FF8 /* SceneDelegate.swift in Sources */,
+				5B0724F324F51CB300A5CBE3 /* Goal.swift in Sources */,
 				5BF8BC7524F10B8B00FC1FF8 /* FoundationExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -382,6 +398,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5B0724ED24F5161400A5CBE3 /* XCRemoteSwiftPackageReference "ChartView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AppPear/ChartView";
+			requirement = {
+				kind = exactVersion;
+				version = "2.0.0-beta.1";
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5B0724EE24F5161400A5CBE3 /* SwiftUICharts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5B0724ED24F5161400A5CBE3 /* XCRemoteSwiftPackageReference "ChartView" */;
+			productName = SwiftUICharts;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		5BF8BC5924F0ED7000FC1FF8 /* Mealary.xcdatamodeld */ = {
