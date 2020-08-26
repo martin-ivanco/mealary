@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct DiaryView: View {
     @Environment(\.managedObjectContext) var context
@@ -55,11 +56,27 @@ struct DayView: View {
     
     var body: some View {
         VStack {
-            NutrientView(nutrient: .calories, value: day.nutritionValue(for: .calories))
+            NutrientView(
+                nutrient: .calories,
+                value: day.nutritionValue(for: .calories),
+                goal: Goal.value(for: .calories, context: self.day.managedObjectContext!)
+            )
             HStack {
-                NutrientView(nutrient: .carbs, value: day.nutritionValue(for: .carbs))
-                NutrientView(nutrient: .proteins, value: day.nutritionValue(for: .proteins))
-                NutrientView(nutrient: .fats, value: day.nutritionValue(for: .fats))
+                NutrientView(
+                    nutrient: .carbs,
+                    value: day.nutritionValue(for: .carbs),
+                    goal: Goal.value(for: .carbs, context: self.day.managedObjectContext!)
+                )
+                NutrientView(
+                    nutrient: .proteins,
+                    value: day.nutritionValue(for: .proteins),
+                    goal: Goal.value(for: .proteins, context: self.day.managedObjectContext!)
+                )
+                NutrientView(
+                    nutrient: .fats,
+                    value: day.nutritionValue(for: .fats),
+                    goal: Goal.value(for: .fats, context: self.day.managedObjectContext!)
+                )
             }
             List {
                 ForEach(MealType.orderedTypes) { mealType in
@@ -86,6 +103,7 @@ struct DayView: View {
 struct NutrientView: View {
     let nutrient: Nutrient
     let value: Double
+    let goal: Double
     
     var body: some View {
         GeometryReader(content: {geometry in
@@ -97,7 +115,17 @@ struct NutrientView: View {
         let radius = min(0.7 * size.width, 0.7 * size.height)
         return VStack {
             ZStack {
-                Circle().stroke(lineWidth: 0.1 * radius).fill(nutrient.color).frame(width: radius, height: radius)
+                Circle()
+                    .stroke(lineWidth: 0.1 * radius)
+                    .opacity(value / goal <= 1 ? 0.3 : 1)
+                    .frame(width: radius, height: radius)
+                Circle()
+                    .trim(from: 0, to: CGFloat((value / goal).truncatingRemainder(dividingBy: 1)))
+                    .stroke(style: StrokeStyle(lineWidth: 0.1 * radius, lineCap: .round, lineJoin: .round))
+                    .foregroundColor(value / goal <= 1 ? nutrient.color : Color.red)
+                    .frame(width: radius, height: radius)
+                    .rotationEffect(Angle(degrees: 270))
+                    .animation(.linear)
                 VStack {
                     Text("\(Int(round(value)))").font(.title)
                     Text(nutrient.unit).foregroundColor(.gray)
