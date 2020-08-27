@@ -44,8 +44,10 @@ struct DiaryView: View {
                             }
                         )
                 }
+                .navigationViewStyle(StackNavigationViewStyle())
             })
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 

@@ -68,6 +68,7 @@ struct YouView: View {
                 .navigationBarTitle("You")
             })
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
@@ -131,6 +132,7 @@ struct GoalsView: View {
                 Alert(title: Text("Field Error!"), message: Text("Please fill out all fields with valid values."), dismissButton: .default(Text("OK")))
             }
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
@@ -164,6 +166,7 @@ struct LogView: View {
                 Alert(title: Text("Field Error!"), message: Text("Please provide a valid weight."), dismissButton: .default(Text("OK")))
             }
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 

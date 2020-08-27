@@ -50,6 +50,7 @@ struct FoodsView: View {
                 }
             )
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
@@ -154,6 +155,7 @@ struct FoodView: View {
                 }), secondaryButton: .cancel())
             }
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 

@@ -66,6 +66,7 @@ struct MealView: View {
                 ItemView(item: self.itemToEdit, meal: self.meal, food: self.itemFood, isPresented: self.$showItemEditor)
             }
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
@@ -146,5 +147,6 @@ struct ItemView: View {
                 }), secondaryButton: .cancel())
             }
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
